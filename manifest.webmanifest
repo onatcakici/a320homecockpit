@@ -1,7 +1,7 @@
 {
-  "name": "A320 Trainer",
-  "short_name": "A320 Trainer",
-  "description": "The whole A320 flight in a working cockpit, with the MCDU taught key by key and the gate to gate checklist.",
+  "name": "A320 Home Cockpit",
+  "short_name": "A320 Cockpit",
+  "description": "Set up your controls and screens, learn the A320 in a working cockpit, then fly it in X Plane.",
   "lang": "en-GB",
   "categories": [
     "education"

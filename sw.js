@@ -1,6 +1,7 @@
-/* Keeps the trainer on the iPad for use with no network: the page and its photos are saved the first time
-   it opens, checked for a newer copy whenever there is a network, and served from here when there is none. */
-const CACHE = 'a320-trainer-41a8ce7bb0';
+/* Keeps the home cockpit on the iPad for use with no network: the page and its photos are saved the first
+   time it opens, checked for a newer copy whenever there is a network, and served from here when there is
+   none. The copies kept under the old name of the site go. */
+const CACHE = 'a320-cockpit-46e3d88cfc';
 const FILES = [
   "./",
   "index.html",
@@ -8,7 +9,7 @@ const FILES = [
   "icon-192.png",
   "icon-512.png",
   "apple-touch-icon.png",
-  "checklist/img/01_trainer.webp",
+  "checklist/img/01_cockpit.webp",
   "checklist/img/02_states.webp",
   "checklist/img/03_overhead_cruise.webp",
   "checklist/img/04_managed.webp",
@@ -20,7 +21,7 @@ const FILES = [
   "checklist/img/10_pfd.webp",
   "checklist/img/11_speedtape.webp",
   "checklist/img/12_fma_photo.webp",
-  "checklist/img/13_fma_trainer.webp",
+  "checklist/img/13_fma_cockpit.webp",
   "checklist/img/14_nd.webp",
   "checklist/img/15_ecam.webp",
   "checklist/img/16_fcu.webp",
@@ -79,7 +80,7 @@ self.addEventListener('install', (e) => {
 });
 self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys()
-    .then((keys) => Promise.all(keys.filter((k) => k.startsWith('a320-trainer-') && k !== CACHE).map((k) => caches.delete(k))))
+    .then((keys) => Promise.all(keys.filter((k) => (k.startsWith('a320-cockpit-') || k.startsWith('a320-trainer-')) && k !== CACHE).map((k) => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', (e) => {
