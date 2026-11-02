@@ -8,7 +8,9 @@ A free A320 home cockpit for flight sim fans, made for fun: set up your joystick
 
 ## What it does
 
-* Your controls: each axis and button of your side stick or joystick, throttle and rudder pedals given the job of an A320 control, with a bar that shows its whole travel as you move it. Every job names its X Plane axis or command, so the sim gets the same setup, and the detents of your thrust levers are set to IDLE, CL, FLX MCT and TOGA.
+It opens on a page with its two ways in: the X Plane setup and the cockpit.
+
+* The X Plane setup: each axis and button of your side stick or joystick, throttle and rudder pedals given the job of an A320 control, with a bar that shows its whole travel as you move it. Every job names its X Plane axis or command, so the sim gets the same setup, the detents of your thrust levers are set to IDLE, CL, FLX MCT and TOGA, and the list to copy into X Plane prints on its own. The cockpit uses the same jobs.
 * Screens: the PFD and ND, the upper and lower ECAM, the overhead panel, the main panel, the pedestal, the MCDU or the EFB, each on a screen of its own and kept in step. In Chrome and Edge each window goes to its screen for you.
 * A cockpit where every switch, knob, lever and screen of the flow works: the overhead panel, the glareshield and main panel, the pedestal and the MCDU, with the systems behind them and the sounds of the aircraft.
 * A guide beside the cockpit that names each control, says why it matters, and can fly the whole flow for you while you watch.
@@ -19,8 +21,8 @@ A free A320 home cockpit for flight sim fans, made for fun: set up your joystick
 
 ## With X Plane
 
-1. Plug in your controls, open Your controls and give each one its job. Move each through its whole travel, and set the detents of your thrust levers.
-2. In X Plane, under Settings, Joystick, give each axis and button the job the home cockpit names for it. An A320 add on, such as the ToLiss A320, may have commands of its own for the side stick and thrust lever buttons, and its own page for the detents: use those.
+1. Plug in your controls, open the X Plane setup and give each one its job. Move each through its whole travel, and set the detents of your thrust levers.
+2. In X Plane, under Settings, Joystick, give each axis and button the job the X Plane setup lists for it; print the list to have it beside you. An A320 add on, such as the ToLiss A320, may have commands of its own for the side stick and thrust lever buttons, and its own page for the detents: use those.
 3. Fly the Istanbul flight in the home cockpit, with Watch the flow first and then on your own, on as many screens as you like.
 4. Fly it again in X Plane, with the gate to gate checklist on a screen beside it.
 

@@ -28,5 +28,20 @@
       "type": "image/png",
       "purpose": "maskable"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cockpit",
+      "url": "./#cockpit"
+    },
+    {
+      "name": "X Plane setup",
+      "url": "./#setup"
+    },
+    {
+      "name": "Gate to gate checklist",
+      "short_name": "Checklist",
+      "url": "./#checklist"
+    }
   ]
 }
