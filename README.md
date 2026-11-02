@@ -2,7 +2,7 @@
 
 A free A320 home cockpit for flight sim fans, made for fun: set up your joystick, throttle and rudder pedals as X Plane wants them, spread a working Airbus A320 cockpit over your screens, and learn the whole flight, from a cold and dark stand at Istanbul Airport through the MCDU setup, the takeoff, the ILS and the landing, back to the gate. Then fly the same flight in X Plane with the gate to gate checklist.
 
-**Open it: https://onatcakici.github.io/a320trainer/**
+**Open it: https://onatcakici.github.io/a320homecockpit/**
 
 ![The A320 Home Cockpit on the ILS to runway 35R at Istanbul: the steps beside the main panel, with the FCU, PFD, ND and ECAM](share.png)
 

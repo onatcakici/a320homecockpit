@@ -1,7 +1,7 @@
 /* Keeps the home cockpit on the iPad for use with no network: the page and its photos are saved the first
    time it opens, checked for a newer copy whenever there is a network, and served from here when there is
    none. The copies kept under the old name of the site go. */
-const CACHE = 'a320-cockpit-46e3d88cfc';
+const CACHE = 'a320-cockpit-ce949ed040';
 const FILES = [
   "./",
   "index.html",
