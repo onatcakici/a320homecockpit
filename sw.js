@@ -1,7 +1,7 @@
 /* Keeps the home cockpit on the iPad for use with no network: the page and its photos are saved the first
    time it opens, checked for a newer copy whenever there is a network, and served from here when there is
    none. The copies kept under the old name of the site go. */
-const CACHE = 'a320-cockpit-9e67e408b4';
+const CACHE = 'a320-cockpit-9ca9a46bb6';
 const FILES = [
   "./",
   "index.html",
@@ -72,10 +72,10 @@ const FILES = [
   "checklist/img/61_a330.webp",
   "checklist/img/flight_profile.webp",
   "checklist/img/home_cockpit.webp",
-  "checklist/img/home_setup.webp",
   "checklist/img/ils_side_view.webp",
   "checklist/img/point_merge.webp",
-  "checklist/img/route_map.webp"
+  "checklist/img/route_map.webp",
+  "checklist/img/setup_panel.webp"
 ];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));

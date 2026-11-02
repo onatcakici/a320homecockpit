@@ -1382,6 +1382,70 @@ dialog.viewer .viewer-cap a { color: inherit; }
 .su-table th { border-top: 0; color: var(--ink-2); font-weight: 600; }
 .su-table code { font-size: 13px; overflow-wrap: anywhere; }
 .su-none { color: var(--ink-2); }
+/* The controllers to get, each drawn beside what it does, and the panel that has every button and switch.
+   The drawings take the page colours: light parts and dark lines on the light page, the other way round on
+   the dark one. */
+:root {
+  --fig-line: #2a2a2d;
+  --fig-face: #efeff1;
+  --fig-mid: #c2c2c6;
+  --fig-deep: #505055;
+  --fig-hi: rgba(255, 255, 255, 0.55);
+  --fig-rib: rgba(255, 255, 255, 0.3);
+  --fig-ground: rgba(0, 0, 0, 0.09);
+  --fig-red: #cf3a2e;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fig-line: #cfcfd4;
+    --fig-face: #3a3a3e;
+    --fig-mid: #55555a;
+    --fig-deep: #1e1e20;
+    --fig-hi: rgba(255, 255, 255, 0.08);
+    --fig-rib: rgba(255, 255, 255, 0.16);
+    --fig-ground: rgba(0, 0, 0, 0.45);
+    --fig-red: #e0493c;
+  }
+}
+:root[data-theme="dark"] {
+  --fig-line: #cfcfd4;
+  --fig-face: #3a3a3e;
+  --fig-mid: #55555a;
+  --fig-deep: #1e1e20;
+  --fig-hi: rgba(255, 255, 255, 0.08);
+  --fig-rib: rgba(255, 255, 255, 0.16);
+  --fig-ground: rgba(0, 0, 0, 0.45);
+  --fig-red: #e0493c;
+}
+.fig { display: block; width: 100%; height: auto; overflow: visible; }
+.fig .face, .fig .mid, .fig .deep { stroke: var(--fig-line); stroke-width: 1.3; stroke-linejoin: round; }
+.fig .face { fill: var(--fig-face); }
+.fig .mid { fill: var(--fig-mid); }
+.fig .deep { fill: var(--fig-deep); }
+.fig .hi { fill: var(--fig-hi); }
+.fig .red { fill: var(--fig-red); stroke: var(--fig-line); stroke-width: 1.1; }
+.fig .ln { fill: none; stroke: var(--fig-line); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.fig .dash { stroke-dasharray: 3 2.5; }
+.fig .fine { fill: none; stroke: var(--fig-line); stroke-width: 0.9; stroke-linecap: round; opacity: 0.45; }
+.fig .rib { fill: none; stroke: var(--fig-rib); stroke-width: 1.1; stroke-linecap: round; }
+.fig .ground { fill: var(--fig-ground); }
+.fig .lab { font: 500 12px var(--font-page); fill: var(--ink-2); }
+.fig .lead { fill: none; stroke: var(--ink-2); stroke-width: 0.8; }
+.su-kit { margin: 6px 0 14px; }
+.su-item { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 8px 30px; align-items: center; padding: 12px 0; border-top: 1px solid var(--rule); }
+.su-item:first-child { padding-top: 2px; border-top: 0; }
+.su-item > .fig, .su-item > .su-screen { width: 220px; }
+.su-item h3 { margin: 0 0 4px; font-size: 16px; }
+.su-item p { max-width: 66ch; margin: 0; color: var(--ink-2); line-height: 1.5; }
+.su-item p.su-pick { margin-top: 6px; color: var(--ink); }
+.su-pick b { font-weight: 600; }
+/* our panel on a screen */
+.su-screen { box-sizing: border-box; padding: 7px; border-radius: 11px; background: #111113; box-shadow: var(--lift); }
+.su-screen img { display: block; width: 100%; height: auto; border-radius: 4px; }
+@media (max-width: 640px) {
+  .su-item { grid-template-columns: minmax(0, 1fr); }
+  .su-item > .fig, .su-item > .su-screen { width: min(100%, 240px); }
+}
 @media print {
   .bar-actions, .footnote, .su-part:not(.su-xp-part), nav.views { display: none !important; }
   .su-xp-part { padding-top: 0; border-top: 0; }
@@ -1421,6 +1485,7 @@ body.view-trainer { overflow: hidden; }
 .home-door:hover { border-color: var(--ink-2); }
 .home-door:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .home-door img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; border-bottom: 1px solid var(--rule); }
+.home-door .door-fig { width: 100%; height: auto; aspect-ratio: 1200 / 630; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
 .home-name { padding: 10px 18px 0; font-size: 20px; font-weight: 700; }
 .home-what { padding: 0 18px; color: var(--ink-2); font-size: 15px; line-height: 1.45; }
 .home-more { max-width: 1500px; margin: 22px auto 26px; padding: 0 max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); color: var(--ink-2); }
@@ -1434,7 +1499,7 @@ body.view-trainer { overflow: hidden; }
 <h1>A320 Home Cockpit</h1>
 <p>A free A320 home cockpit in the browser, made for fun: set up your joystick, throttle and rudder pedals as X Plane wants them, spread a working cockpit over your screens, and learn the whole flight, from a cold and dark stand at Istanbul Airport through the MCDU setup, the takeoff, the ILS and an autoland, back to the gate. Then fly the same flight in X Plane with the gate to gate checklist.</p>
 <ul>
-<li>The X Plane setup: each axis and button of your joystick, throttle and pedals given the job of an A320 control, with the X Plane axis or command for it, the detents of your thrust levers, and the list to copy into X Plane.</li>
+<li>The X Plane setup: the side stick, throttle and rudder pedals to get, then each axis and button given the job of an A320 control, with the X Plane axis or command for it, the detents of your thrust levers, and the list to copy into X Plane.</li>
 <li>Screens: the PFD and ND, the ECAM, the overhead panel, the pedestal or the MCDU, each on a screen of its own.</li>
 <li>Overhead panel, glareshield, main panel, pedestal and MCDU that work, with the systems behind them and the sounds of the aircraft.</li>
 <li>A guide that names every switch, says why it matters and can fly the flow for you.</li>
@@ -1471,9 +1536,9 @@ body.view-trainer { overflow: hidden; }
     <span class="home-what">Learn the A320: the whole flight in a working cockpit, from cold and dark at the stand back to the gate, with your own controls and on as many screens as you have.</span>
   </a>
   <a class="home-door" href="#setup">
-    <img data-file="home_setup.webp" src="checklist/img/home_setup.webp" alt="The X Plane setup, with each job of a joystick and a throttle and the bar of each axis" width="1200" height="630">
+    <svg class="fig door-fig" viewBox="0 0 600 315" role="img" aria-label="A side stick, a throttle and rudder pedals"><g transform="translate(-80 68.5) scale(1.25)"><ellipse class="ground" cx="146" cy="181" rx="74" ry="5"/><path class="face" d="M84 180V152Q84 143 93 143H192Q201 143 204 152L210 171Q212 180 203 180Z"/><path class="fine" d="M93 150H193"/><path class="mid" d="M118 143V137Q118 134 121 134H167Q170 134 170 137V143Z"/><path class="deep" d="M123 134C125 129 129 124 133 121H155C159 124 163 129 165 134Z"/><path class="rib" d="M127 129.5Q144 132 161 129.5M130 125Q144 126.8 158 125"/><g transform="translate(144 121) rotate(11)"><path class="mid" d="M-14 1C-18-8-31-19-31-33C-31-45-21-51-19-61C-17-72-22-84-19-95C-16-105-4-110 7-107C16-105 21-98 21-90L20-83C24-81 25-73 19-69C14-63 13-53 14-43C15-29 18-14 15 1Z"/><path class="hi" d="M-26-36C-25-46-17-52-15-62C-13-73-17-84-14-93C-12-99-7-103-2-104C-9-96-9-86-9-74C-9-62-14-52-16-40C-17-31-14-22-11-14C-18-21-26-28-26-36Z"/><path class="deep" d="M20-83C27-81 28-72 19-69Z"/><rect class="red" x="-14" y="-113" width="14" height="7" rx="3.5"/></g></g><g transform="translate(127.5 68.5) scale(1.25)"><ellipse class="ground" cx="126" cy="181" rx="74" ry="5"/><path class="face" d="M67.8 123.2A77 77 0 0 1 184.2 123.2L190 171Q191 180 182 180H70Q61 180 62 171Z"/><path class="fine" d="M80.6 128.3A62 62 0 0 1 171.4 128.3"/><path class="fine" d="M70 168H182"/><path class="ln" d="M79.7 116.8L72 107.7M106.2 102.8L102.8 91.3M133.5 100.4L134.8 88.5M157.6 107.3L162.8 96.5M177.8 122L186.4 113.6"/><g transform="rotate(6 126 172)"><rect class="deep" x="121" y="60" width="10" height="44" rx="2"/><path class="deep" d="M131 74C138 74 143 70 145 63L149 64C147 73 140 79 131 79Z"/><rect class="mid" x="104" y="44" width="52" height="19" rx="9"/><path class="hi" d="M110 48H150Q152 48 152 50H108Q108 48 110 48Z"/><circle class="red" cx="114" cy="53.5" r="3.8"/></g></g><g transform="translate(317.5 68.5) scale(1.25)"><ellipse class="ground" cx="130" cy="183" rx="86" ry="5"/><path class="mid" d="M54 172H206V178Q206 182 202 182H58Q54 182 54 178Z"/><path class="face" d="M54 172L76 146H184L206 172Z"/><path class="mid" d="M116 152V130Q116 126 120 126H140Q144 126 144 130V152Z"/><path class="fine" d="M120 132H140"/><g><path class="deep" d="M76 161Q75 165 79 165H113Q117 165 116 161L112 84Q112 80 108 80H90Q86 80 86 84Z"/><path class="rib" d="M88 92H110M88 99H110M78 128H114M78 136H114M77 144H115M77 152H115"/><path class="ln dash" d="M84 112H113"/></g><g transform="translate(260 0) scale(-1 1)"><path class="deep" d="M76 161Q75 165 79 165H113Q117 165 116 161L112 84Q112 80 108 80H90Q86 80 86 84Z"/><path class="rib" d="M88 92H110M88 99H110M78 128H114M78 136H114M77 144H115M77 152H115"/><path class="ln dash" d="M84 112H113"/></g></g></svg>
     <span class="home-name">X Plane setup</span>
-    <span class="home-what">Give your joystick, throttle and rudder pedals the jobs of the A320's controls, check each one, set the detents of your thrust levers, and copy the setup into X Plane.</span>
+    <span class="home-what">Choose a side stick, a throttle and rudder pedals, give them the jobs of the A320's controls, check each one, and copy the setup into X Plane.</span>
   </a>
 </main>
 <p class="home-more">Also here: the <a href="#checklist">gate to gate checklist</a>, to fly the same flight in X Plane, and the <a href="#mcdu">MCDU practice</a>, for other flights.</p>
@@ -1496,8 +1561,81 @@ body.view-trainer { overflow: hidden; }
 
 <main class="su" id="ck-controls">
   <section class="su-part">
-    <h2>1. Plug in your controls</h2>
-    <p>Plug in your side stick or joystick, your throttle and your rudder pedals, then move each one or press one of its buttons: a browser shows a controller only once it is used. This page works in Chrome, Edge and Firefox.</p>
+    <h2>1. Your controls</h2>
+    <p>The A320 needs three controls in your hands and under your feet: a side stick, a throttle with detents and rudder pedals. Every button, switch and knob is on our panel.</p>
+    <div class="su-kit">
+      <div class="su-item">
+      <svg class="fig" id="fig-stick" viewBox="30 0 200 192" role="img" aria-label="A side stick, seen from the left, with the autopilot disconnect button on its top">
+        <ellipse class="ground" cx="146" cy="181" rx="74" ry="5"/>
+        <path class="face" d="M84 180V152Q84 143 93 143H192Q201 143 204 152L210 171Q212 180 203 180Z"/>
+        <path class="fine" d="M93 150H193"/>
+        <path class="mid" d="M118 143V137Q118 134 121 134H167Q170 134 170 137V143Z"/>
+        <path class="deep" d="M123 134C125 129 129 124 133 121H155C159 124 163 129 165 134Z"/>
+        <path class="rib" d="M127 129.5Q144 132 161 129.5M130 125Q144 126.8 158 125"/>
+        <g transform="translate(144 121) rotate(11)">
+          <path class="mid" d="M-14 1C-18-8-31-19-31-33C-31-45-21-51-19-61C-17-72-22-84-19-95C-16-105-4-110 7-107C16-105 21-98 21-90L20-83C24-81 25-73 19-69C14-63 13-53 14-43C15-29 18-14 15 1Z"/>
+          <path class="hi" d="M-26-36C-25-46-17-52-15-62C-13-73-17-84-14-93C-12-99-7-103-2-104C-9-96-9-86-9-74C-9-62-14-52-16-40C-17-31-14-22-11-14C-18-21-26-28-26-36Z"/>
+          <path class="deep" d="M20-83C27-81 28-72 19-69Z"/>
+          <rect class="red" x="-14" y="-113" width="14" height="7" rx="3.5"/>
+        </g>
+        <path class="lead" d="M148 11H132"/>
+        <text class="lab" x="129" y="15" text-anchor="end">Autopilot</text>
+        <text class="lab" x="129" y="29" text-anchor="end">disconnect</text>
+      </svg>
+        <div>
+          <h3>Side stick or joystick</h3>
+          <p>Pitch and roll, and the autopilot disconnect on its red button. Any joystick works.</p>
+          <p class="su-pick"><b>Suggested:</b> the Thrustmaster TCA Sidestick Airbus Edition, a full size copy of the A320's for the captain's seat or the first officer's. Its twist and the lever on its base can stand in for the rudder pedals and the throttle until you have them.</p>
+        </div>
+      </div>
+      <div class="su-item">
+      <svg class="fig" id="fig-throttle" viewBox="30 36 200 156" role="img" aria-label="A throttle, seen from the left, its lever in CL, with REV, IDLE, CL, FLX MCT and TOGA along its arc">
+        <ellipse class="ground" cx="126" cy="181" rx="74" ry="5"/>
+        <path class="face" d="M67.8 123.2A77 77 0 0 1 184.2 123.2L190 171Q191 180 182 180H70Q61 180 62 171Z"/>
+        <path class="fine" d="M80.6 128.3A62 62 0 0 1 171.4 128.3"/>
+        <path class="fine" d="M70 168H182"/>
+        <path class="ln" d="M79.7 116.8L72 107.7M106.2 102.8L102.8 91.3M133.5 100.4L134.8 88.5M157.6 107.3L162.8 96.5M177.8 122L186.4 113.6"/>
+        <g transform="rotate(6 126 172)"><rect class="deep" x="121" y="60" width="10" height="44" rx="2"/><path class="deep" d="M131 74C138 74 143 70 145 63L149 64C147 73 140 79 131 79Z"/><rect class="mid" x="104" y="44" width="52" height="19" rx="9"/><path class="hi" d="M110 48H150Q152 48 152 50H108Q108 48 110 48Z"/><circle class="red" cx="114" cy="53.5" r="3.8"/></g>
+        <text class="lab" x="65.5" y="106.3" text-anchor="end">REV</text>
+        <text class="lab" x="98.9" y="88.5" text-anchor="end">IDLE</text>
+        <text class="lab" x="128" y="80" text-anchor="end">CL</text>
+        <text class="lab" x="167.9" y="94.2" text-anchor="start">FLX MCT</text>
+        <text class="lab" x="193.5" y="112.8" text-anchor="start">TOGA</text>
+      </svg>
+        <div>
+          <h3>Throttle with detents</h3>
+          <p>The thrust levers, with IDLE, CL, FLX MCT and TOGA where the A320 has them, and reverse behind IDLE. With any throttle, set its detents in step 2.</p>
+          <p class="su-pick"><b>Suggested:</b> the Thrustmaster TCA Quadrant Airbus Edition, with these detents and the engine master switches; its Add On Airbus Edition brings the speed brake and the flaps levers. The TCA Officer Pack Airbus Edition is the side stick and this throttle together.</p>
+        </div>
+      </div>
+      <div class="su-item">
+      <svg class="fig" id="fig-pedals" viewBox="30 42 200 150" role="img" aria-label="Rudder pedals, seen from the seat, with a toe brake on the top of each pedal">
+        <ellipse class="ground" cx="130" cy="183" rx="86" ry="5"/>
+        <path class="mid" d="M54 172H206V178Q206 182 202 182H58Q54 182 54 178Z"/>
+        <path class="face" d="M54 172L76 146H184L206 172Z"/>
+        <path class="mid" d="M116 152V130Q116 126 120 126H140Q144 126 144 130V152Z"/>
+        <path class="fine" d="M120 132H140"/>
+        <g><path class="deep" d="M76 161Q75 165 79 165H113Q117 165 116 161L112 84Q112 80 108 80H90Q86 80 86 84Z"/><path class="rib" d="M88 92H110M88 99H110M78 128H114M78 136H114M77 144H115M77 152H115"/><path class="ln dash" d="M84 112H113"/></g>
+        <g transform="translate(260 0) scale(-1 1)"><path class="deep" d="M76 161Q75 165 79 165H113Q117 165 116 161L112 84Q112 80 108 80H90Q86 80 86 84Z"/><path class="rib" d="M88 92H110M88 99H110M78 128H114M78 136H114M77 144H115M77 152H115"/><path class="ln dash" d="M84 112H113"/></g>
+        <path class="lead" d="M101 86L118 60M159 86L142 60"/>
+        <text class="lab" x="130" y="55" text-anchor="middle">Toe brakes</text>
+      </svg>
+        <div>
+          <h3>Rudder pedals with toe brakes</h3>
+          <p>The rudder, and the brakes: press the top of a pedal with your toes to brake on that side.</p>
+          <p class="su-pick"><b>Suggested:</b> the Thrustmaster T.Flight Rudder Pedals or the Logitech G Flight Rudder Pedals, both with toe brakes.</p>
+        </div>
+      </div>
+      <div class="su-item">
+        <div class="su-screen"><img data-file="setup_panel.webp" src="checklist/img/setup_panel.webp" alt="The electrics and the air conditioning on the overhead panel of the cockpit" width="960" height="591"></div>
+        <div>
+          <h3>Buttons, switches and knobs: our panel</h3>
+          <p>The overhead, the FCU, the pedestal and the MCDU are the cockpit's own panels, on your screens, so you need no other hardware.</p>
+          <p class="su-pick">Screens, at the top of the cockpit, gives each panel a screen of its own; on a touch screen you press them as on the aircraft.</p>
+        </div>
+      </div>
+    </div>
+    <p>Plug in your controls, then move each one or press one of its buttons: a browser shows a controller only once it is used. This page works in Chrome, Edge and Firefox.</p>
     <p class="su-found" id="ck-controls-found" aria-live="polite"></p>
   </section>
 
@@ -1519,7 +1657,7 @@ body.view-trainer { overflow: hidden; }
 
 <footer class="footnote">
   <div class="colours"><span>Page colours</span><div class="seg" role="group" aria-label="Page colours"><button type="button" data-colours="auto">Automatic</button><button type="button" data-colours="light">Light</button><button type="button" data-colours="dark">Dark</button></div></div>
-  <p>Made for fun, as a flight sim game: not official training, and never for real flight operations. Not affiliated with or endorsed by Airbus or Laminar Research; Airbus and A320 are trademarks of Airbus and X Plane of Laminar Research. Your controls stay in this browser; nothing is collected and no cookies are set. Provided as is, with no warranty; the author accepts no liability for any use of it.</p>
+  <p>Made for fun, as a flight sim game: not official training, and never for real flight operations. Not affiliated with or endorsed by Airbus, Laminar Research or the makers of the controllers named here; Airbus and A320 are trademarks of Airbus, X Plane of Laminar Research, and Thrustmaster, TCA, T.Flight and Logitech G of their owners. Your controls stay in this browser; nothing is collected and no cookies are set. Provided as is, with no warranty; the author accepts no liability for any use of it.</p>
 </footer>
 
 

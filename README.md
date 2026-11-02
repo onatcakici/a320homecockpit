@@ -10,7 +10,7 @@ A free A320 home cockpit for flight sim fans, made for fun: set up your joystick
 
 It opens on a page with its two ways in: the X Plane setup and the cockpit.
 
-* The X Plane setup: each axis and button of your side stick or joystick, throttle and rudder pedals given the job of an A320 control, with a bar that shows its whole travel as you move it. Every job names its X Plane axis or command, so the sim gets the same setup, the detents of your thrust levers are set to IDLE, CL, FLX MCT and TOGA, and the list to copy into X Plane prints on its own. The cockpit uses the same jobs.
+* The X Plane setup: the side stick, throttle and rudder pedals to get, drawn with what each does, then each of their axes and buttons given the job of an A320 control, with a bar that shows its whole travel as you move it. Every job names its X Plane axis or command, so the sim gets the same setup, the detents of your thrust levers are set to IDLE, CL, FLX MCT and TOGA, and the list to copy into X Plane prints on its own. The cockpit uses the same jobs.
 * Screens: the PFD and ND, the upper and lower ECAM, the overhead panel, the main panel, the pedestal, the MCDU or the EFB, each on a screen of its own and kept in step. In Chrome and Edge each window goes to its screen for you.
 * A cockpit where every switch, knob, lever and screen of the flow works: the overhead panel, the glareshield and main panel, the pedestal and the MCDU, with the systems behind them and the sounds of the aircraft.
 * A guide beside the cockpit that names each control, says why it matters, and can fly the whole flow for you while you watch.
